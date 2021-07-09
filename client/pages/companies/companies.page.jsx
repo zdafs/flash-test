@@ -6,6 +6,7 @@ import { Button } from "../../base-components/button";
 import { PageTitle } from "../../base-components/page-title";
 import { Row, Col, message } from "antd";
 import { GET_ALL_COMPANIES } from "../../graphql/queries";
+import { formatCNPJ } from "../../common";
 
 const columns = [
   {
@@ -63,6 +64,10 @@ export const CompaniesPage = () => {
     history.push(`/create-company`);
   };
 
+  const dataSource = companiesData?.getAllCompanies
+    .map((companyData) => ({ ...companyData, cnpj: formatCNPJ(companyData.cnpj) }))
+  ?? [];
+
   return (
     <>
       <Row align="middle" gutter={[0, 24]}>
@@ -84,7 +89,7 @@ export const CompaniesPage = () => {
             pagination={{ pageSize: 6 }}
             rowKey={(record) => record.id}
             columns={columns}
-            dataSource={companiesData?.getAllCompanies ?? []}
+            dataSource={dataSource}
             onRow={handleRow}
           />
         </Col>
