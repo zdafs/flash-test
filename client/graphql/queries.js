@@ -9,7 +9,7 @@ export const GET_ALL_COMPANIES = gql`
       tradingName
       address
       chosenBenefits
-      employees
+      # employees [BUG] no employees field
     }
   }
 `;

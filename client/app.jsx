@@ -1,3 +1,4 @@
+import React from 'react'; // [BUG] no react import
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Header } from "./base-components/header";
 import { PageWrapper } from "./base-components/page-wrapper";

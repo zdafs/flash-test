@@ -44,7 +44,7 @@ export const CompaniesPage = () => {
   const { loading: companiesLoading, data: companiesData } = useQuery(
     GET_ALL_COMPANIES,
     {
-      fetchPolicy: "cache-only",
+      fetchPolicy: "cache-and-network", // [BUG] never calls the server
       onError: (err) => message.error(err.message),
     }
   );
@@ -72,7 +72,7 @@ export const CompaniesPage = () => {
         <Col>
           <Button
             type="primary"
-            onCLick={handleCreateCompany}
+            onClick={handleCreateCompany} // [BUG] onCLick
             color="secondary"
           >
             Criar empresa

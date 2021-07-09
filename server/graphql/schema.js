@@ -1,4 +1,6 @@
-import { gql } from "apollo-server";
+import apolloServer from "apollo-server";
+
+const { gql } = apolloServer
 
 export const typeDefs = gql`
   type Company {
@@ -21,7 +23,7 @@ export const typeDefs = gql`
       tradingName: String!
       cnpj: String!
       address: String!
-      chosenBenefits: [String]!
+      chosenBenefits: [String!]! # [BUG?] permits saving array with null value
     ): Company
   }
 `;
