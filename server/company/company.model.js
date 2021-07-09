@@ -22,7 +22,11 @@ const CompanySchema = new mongoose.Schema({
     maxlength: [100, "Endereço deve possuir no máximo 100 caracteres"],
   },
   chosenBenefits: {
-    type: Array,
+    type: [{
+      type: String,
+      enum: ['vr', 'vt', 'gympass'],
+      required: [true, 'Providencie um benefício de tipo valido'],
+    }],
     required: [true, "Benefícios são obrigatórios"], // [BUG?] required field was not required
   },
 });

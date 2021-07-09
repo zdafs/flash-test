@@ -12,6 +12,12 @@ export const typeDefs = gql`
     chosenBenefits: [String]
   }
 
+  enum Benefits {
+    vr
+    vt
+    gympass
+  }
+
   type Query {
     getAllCompanies: [Company]
     findCompanyById(id: String!): Company
@@ -23,7 +29,7 @@ export const typeDefs = gql`
       tradingName: String!
       cnpj: String!
       address: String!
-      chosenBenefits: [String!]! # [BUG?] permits saving array with null value
+      chosenBenefits: [Benefits!]! # [BUG?] permits saving array with null value
     ): Company
   }
 `;

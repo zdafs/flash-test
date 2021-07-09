@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { BENEFIT_TYPE } from "./constants";
 
 export const CREATE_COMPANY = gql`
   mutation CreateCompany(
@@ -6,7 +7,7 @@ export const CREATE_COMPANY = gql`
     $tradingName: String!
     $cnpj: String!
     $address: String!
-    $chosenBenefits: [String!]!
+    $chosenBenefits: [${BENEFIT_TYPE}!]!
   ) {
     createCompany(
       name: $name

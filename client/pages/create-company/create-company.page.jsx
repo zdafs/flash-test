@@ -5,19 +5,20 @@ import { Body } from "./create-company.styles";
 import { Button } from "../../base-components/button";
 import { PageTitle } from "../../base-components/page-title";
 import { CREATE_COMPANY } from "../../graphql/mutations";
+import { BENEFITS } from "../../graphql/constants";
 
 const benefits = [
   {
     label: "VR",
-    value: "vr",
+    value: BENEFITS.VR,
   },
   {
     label: "VT",
-    value: "vt",
+    value: BENEFITS.VT,
   },
   {
     label: "GymPass",
-    value: "gymPass",
+    value: BENEFITS.GYM_PASS,
   },
 ];
 
