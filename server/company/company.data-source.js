@@ -1,4 +1,5 @@
-import { DataSource } from "apollo-datasource";
+import apolloDatasource from "apollo-datasource";
+const { DataSource } = apolloDatasource
 
 export class CompaniesAPI extends DataSource {
   constructor(companyModel) {
