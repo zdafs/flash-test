@@ -25,3 +25,30 @@ export const CREATE_COMPANY = gql`
     }
   }
 `;
+
+export const CREATE_EMPLOYEE = gql`
+  mutation CreateEmployee(
+    $name: String!
+    $phone: String!
+    $cpf: String!
+    $givenBenefits: [Benefits!]!
+    $address: String!
+    $companies: [String!]!
+  ) {
+    createEmployee(
+      name: $name
+      phone: $phone
+      cpf: $cpf
+      givenBenefits: $givenBenefits
+      address: $address
+      companies: $companies
+    ) {
+      id
+      name
+      phone
+      cpf
+      givenBenefits
+      address
+    }
+  }
+`;
