@@ -8,14 +8,28 @@ export class CompaniesAPI extends DataSource {
   }
 
   async getAllCompanies() {
-    return this.model.find();
+    return this.model.find().populate('employees');
   }
 
   async findById(id) {
-    return this.model.findById(id);
+    return this.model.findById(id).populate('employees');
   }
 
   async createCompany(args) {
     return this.model.create(args);
+  }
+
+  async addEmployee(id, newEmployee) {
+    const company = await this.findById(id);
+
+    const hasEmployee = company.employees.some((employee) => employee.cpf === newEmployee.cpf);
+    if (hasEmployee) {
+      throw new Error('Funcionário já registrado na empresa');
+    }
+
+    return this.model.findByIdAndUpdate(
+      id,
+      { $push: { employees: newEmployee.id } }
+    );
   }
 }
