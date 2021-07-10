@@ -13,3 +13,18 @@ export const GET_ALL_COMPANIES = gql`
     }
   }
 `;
+
+export const FIND_EMPLOYEES_BY_COMPANY_ID = gql`
+  query FindEmployeesByCompanyId($id: String!) {
+    findCompanyById(id: $id) {
+      tradingName
+      employees {
+        id
+        name
+        phone
+        cpf
+        givenBenefits
+      }
+    }
+  }
+`;
