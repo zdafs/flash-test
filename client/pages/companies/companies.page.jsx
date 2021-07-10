@@ -74,15 +74,6 @@ export const CompaniesPage = () => {
         <Col>
           <PageTitle>Empresas</PageTitle>
         </Col>
-        <Col>
-          <Button
-            type="primary"
-            onClick={handleCreateCompany} // [BUG] onCLick
-            color="secondary"
-          >
-            Criar empresa
-          </Button>
-        </Col>
         <Col span={24}>
           <Companies
             loading={companiesLoading}

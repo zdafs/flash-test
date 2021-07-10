@@ -1,7 +1,8 @@
 import { Row, Col } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Menu } from "../assets/icons/menu";
+import { Menu as OriginalMenuIcon } from "../assets/icons/menu";
+import { Menu } from './menu';
 
 export const HeaderWrapper = styled(Row)`
   && {
@@ -10,7 +11,7 @@ export const HeaderWrapper = styled(Row)`
     padding: 16px;
   }
 `;
-export const MenuIcon = styled(Menu)`
+export const MenuIcon = styled(OriginalMenuIcon)`
   && {
     :hover {
       cursor: pointer;
@@ -18,10 +19,16 @@ export const MenuIcon = styled(Menu)`
   }
 `;
 
-export const Header = () => (
-  <HeaderWrapper>
-    <Col>
-      <MenuIcon />
-    </Col>
-  </HeaderWrapper>
-);
+export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  return (
+    <HeaderWrapper>
+      <Col>
+        <MenuIcon onClick={toggleMenu} />
+        <Menu isOpen={isMenuOpen} />
+      </Col>
+    </HeaderWrapper>
+  )
+};
