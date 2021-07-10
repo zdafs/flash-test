@@ -15,6 +15,7 @@ export const typeDefs = gql`
     phone: String
     cpf: String
     givenBenefits: [Benefits]
+    address: String
   }
 
   type Company {
@@ -48,6 +49,7 @@ export const typeDefs = gql`
       phone: String!
       cpf: String!
       givenBenefits: [Benefits!]!
+      address: String!
       companies: [String!]!
     ): Employee
   }

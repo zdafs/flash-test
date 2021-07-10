@@ -26,6 +26,11 @@ const columns = [
     key: "cpf",
   },
   {
+    title: "Endereço",
+    dataIndex: "address",
+    key: "address",
+  },
+  {
     title: "Benefícios",
     dataIndex: "givenBenefits",
     key: "givenBenefits",

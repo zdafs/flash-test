@@ -26,6 +26,11 @@ const EmployeeSchema = new mongoose.Schema({
     }],
     required: [true, "Benefícios são obrigatórios"],
   },
+  address: {
+    type: String,
+    required: [true, "Endereço é obrigatório"],
+    maxlength: [100, "Endereço deve possuir no máximo 100 caracteres"],
+  },
   // companies: {
   //   type: [{
   //     type: mongoose.Schema.Types.ObjectId,

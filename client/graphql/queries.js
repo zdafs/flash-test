@@ -23,6 +23,7 @@ export const FIND_EMPLOYEES_BY_COMPANY_ID = gql`
         name
         phone
         cpf
+        address
         givenBenefits
       }
     }
