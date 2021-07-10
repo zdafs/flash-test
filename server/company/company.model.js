@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { MODEL_NAME as EMPLOYEES_MODEL_NAME } from "../employee/employee.model.js";
 
 const CompanySchema = new mongoose.Schema({
   name: {
@@ -30,7 +31,15 @@ const CompanySchema = new mongoose.Schema({
     }],
     required: [true, "Benefícios são obrigatórios"], // [BUG?] required field was not required
   },
+  employees: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: EMPLOYEES_MODEL_NAME,
+    }],
+  },
 });
 
+export const MODEL_NAME = 'companies';
+
 export default mongoose.models.companies ||
-  mongoose.model("companies", CompanySchema);
+  mongoose.model(MODEL_NAME, CompanySchema);
