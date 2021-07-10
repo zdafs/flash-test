@@ -15,6 +15,7 @@ const CompanySchema = new mongoose.Schema({
     type: String,
     required: [true, "CNPJ é obrigatório"],
     match: [/^[0-9]{14}$/, "CNPJ deve possuir apenas números e 14 caracteres"], // [BUG] wrong regex
+    unique: true,
   },
   address: {
     type: String,
