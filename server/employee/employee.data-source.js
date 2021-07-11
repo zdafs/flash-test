@@ -18,7 +18,7 @@ export class EmployeeAPI extends DataSource {
 
   async createEmployee(args) {
     const { companies, ...restArgs } = args;
-    if (companies.length === 0) {
+    if (!companies || companies.length === 0) {
       throw new Error('Pelo menos uma empresa deve estar relacionada ao funcionário');
     }
 

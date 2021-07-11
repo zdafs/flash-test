@@ -21,6 +21,9 @@ export class CompaniesAPI extends DataSource {
 
   async addEmployee(id, newEmployee) {
     const company = await this.findById(id);
+    if (!company) {
+      throw new Error('Empresa não encontrada');
+    }
 
     const hasEmployee = company.employees.some((employee) => employee.cpf === newEmployee.cpf);
     if (hasEmployee) {
