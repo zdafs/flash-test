@@ -12,6 +12,8 @@ It will run a local mongodb on port 27017 and populate the collection 'companies
 
 Use your favorite GUI client to check it out, like Robo3T, NoSQLBooster or MongoDB Compass.
 
+Install [nvm](https://github.com/nvm-sh/nvm) and run `nvm use` to use the same node version used during development.
+
 Install the dependencies and run the server:
 
 ```shell
@@ -44,3 +46,17 @@ This exercise consists on finding 8 bugs spread across the client and the server
 - Wrong regex on cnpj field validator - server/company/company.model.js - line 17
 - Required `chosenBenefits` field was not required on DB model - server/company/company.model.js - line 26
 - Query schema permits array with null values - server/graphql/schema.js - line 26
+
+## Exercise 02
+
+This exercise consists in creating a new employee entity that relates to the existing company entity. This was done by creating a nem mongoose model `employee` and relating it to `company`. Beyond that, in order to allow user interaction with those entities, graphql schemas were created and a employee creation screen was implemented.
+
+To navigate through the pages there is a menu on the top left corner of the application and to check all the employees related to a company you can click the company row on the companies page.
+
+## Extra
+
+As a bonus code split by routes was implemented by following [parcels own instructions](https://parceljs.org/code_splitting.html).
+
+# Tests
+
+Tests were made using [jest](https://jestjs.io/pt-BR/). The integration with the DB was made using [mongodb-memory-server](https://www.npmjs.com/package/mongodb-memory-server). To run the tests, issue the command `yarn test`.
