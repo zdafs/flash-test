@@ -11,9 +11,13 @@
   },
   "scripts": {
     "server": "nodemon server/index.js",
-    "client": "parcel client/index.html"
+    "client": "parcel client/index.html",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --testEnvironment=node",
+    "test:watch": "yarn test -- --watch"
   },
   "devDependencies": {
+    "jest": "^27.0.6",
+    "mongodb-memory-server": "^7.2.0",
     "nodemon": "^2.0.7",
     "parcel-bundler": "^1.12.5"
   },
