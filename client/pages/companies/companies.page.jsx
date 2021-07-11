@@ -88,3 +88,5 @@ export const CompaniesPage = () => {
     </>
   );
 };
+
+export default CompaniesPage;

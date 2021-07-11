@@ -134,3 +134,5 @@ export const CreateCompanyPage = () => {
     </>
   );
 };
+
+export default CreateCompanyPage;

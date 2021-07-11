@@ -1,24 +1,28 @@
-import React from 'react'; // [BUG] no react import
+import React, { Suspense, lazy } from 'react'; // [BUG] no react import
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Header } from "./base-components/header";
 import { PageWrapper } from "./base-components/page-wrapper";
-import { CompaniesPage } from "./pages/companies/companies.page";
-import { CompanyPage } from './pages/company/company.page';
-import { CreateCompanyPage } from "./pages/create-company/create-company.page";
-import { CreateEmployeePage } from './pages/create-employee/create-employee.page';
+import ROUTES from './routes';
+
+const CompaniesPage = lazy(() => import('./pages/companies/companies.page'));
+const CompanyPage = lazy(() => import('./pages/company/company.page'));
+const CreateCompanyPage = lazy(() => import('./pages/create-company/create-company.page'));
+const CreateEmployeePage = lazy(() => import('./pages/create-employee/create-employee.page'));
 
 export const App = () => (
   <BrowserRouter>
     <Header />
     <PageWrapper>
-      <Switch>
-        <Route path="/create-company" component={() => <CreateCompanyPage />} />
-        <Route exact path="/companies" component={() => <CompaniesPage />} />
-        <Route path="/companies/:companyId" component={() => <CompanyPage />} />
-        <Route path="/create-employee" component={() => <CreateEmployeePage />} />
+      <Suspense fallback={<div>Carregando...</div>}>
+        <Switch>
+          <Route exact path={ROUTES.CREATE_COMPANY} component={CreateCompanyPage} />
+          <Route exact path={ROUTES.COMPANIES} component={CompaniesPage} />
+          <Route exact path={ROUTES.COMPANY} component={CompanyPage} />
+          <Route exact path={ROUTES.CREATE_EMPLOYEE} component={CreateEmployeePage} />
 
-        <Redirect to="/companies" />
-      </Switch>
+          <Redirect to={ROUTES.COMPANIES} />
+        </Switch>
+      </Suspense>
     </PageWrapper>
   </BrowserRouter>
 );

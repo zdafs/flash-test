@@ -173,3 +173,5 @@ export const CreateEmployeePage = () => {
     </>
   );
 };
+
+export default CreateEmployeePage;

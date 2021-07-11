@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Menu as MenuAntd } from "antd";
 import styled from "styled-components";
+import ROUTES from '../routes';
 
 const StyledMenu = styled(MenuAntd)`
   position: relative;
@@ -9,9 +10,9 @@ const StyledMenu = styled(MenuAntd)`
 `;
 
 const keyToRoute = {
-  'companies': '/companies',
-  'create-company': '/create-company',
-  'create-employee': '/create-employee',
+  'companies': ROUTES.COMPANIES,
+  'create-company': ROUTES.CREATE_COMPANY,
+  'create-employee': ROUTES.CREATE_EMPLOYEE,
 };
 
 export const Menu = ({ isOpen }) => {

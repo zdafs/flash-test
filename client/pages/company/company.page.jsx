@@ -74,3 +74,5 @@ export const CompanyPage = () => {
     </>
   );
 };
+
+export default CompanyPage;
