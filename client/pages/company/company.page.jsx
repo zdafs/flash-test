@@ -5,7 +5,7 @@ import { Employees } from "./company.styles";
 import { PageTitle } from "../../base-components/page-title";
 import { Row, Col, message } from "antd";
 import { FIND_EMPLOYEES_BY_COMPANY_ID } from "../../graphql/queries";
-import { formatCPF } from "../../common";
+import { formatCPF, formatPhone } from "../../common";
 
 const columns = [
   {
@@ -52,7 +52,7 @@ export const CompanyPage = () => {
 
   const companyTitle = companyData?.findCompanyById.tradingName ?? '...';
   const dataSource = companyData?.findCompanyById.employees
-    .map((employee) => ({ ...employee, cpf: formatCPF(employee.cpf) }))
+    .map((employee) => ({ ...employee, cpf: formatCPF(employee.cpf), phone: formatPhone(employee.phone) }))
   ?? [];
 
   return (

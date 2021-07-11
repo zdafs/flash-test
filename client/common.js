@@ -5,3 +5,7 @@ export const formatCNPJ = (cnpj) => (
 export const formatCPF = (cpf) => (
   `${cpf.substring(0, 3)}.${cpf.substring(3, 6)}.${cpf.substring(6, 9)}-${cpf.substring(9)}`
 );
+
+export const formatPhone = (phone) => (
+  `(${phone.substring(0, 2)}) ${phone.substring(2, 7)}-${phone.substring(7)}`
+);
