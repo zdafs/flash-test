@@ -47,6 +47,12 @@ This exercise consists on finding 8 bugs spread across the client and the server
 - Required `chosenBenefits` field was not required on DB model - server/company/company.model.js - line 26
 - Query schema permits array with null values - server/graphql/schema.js - line 26
 
+These bugs and its fixes can be found on [commit 90624a5c59cea9086dbce6ee826afa0598b18efb](https://github.com/zdafs/flash-test/commit/90624a5c59cea9086dbce6ee826afa0598b18efb).
+
+Another thing worth pointing out is that, while running the server for the first time, the `apollo-server` named imports were breaking (fix [here](https://github.com/zdafs/flash-test/commit/f20a6115c9611c5a9861caa5f039a4f45560a688)). It looks like the problem is related with the `package.json` not having the `"type": "module"` key on this version of the lib.
+
+Finally one change was made to the DB init script in order for the `cnpj` field to conform with the model regex (change can be found [here](https://github.com/zdafs/flash-test/commit/e6db540ec53cce298bf345ec3d88b5fed00860df)).
+
 ## Exercise 02
 
 This exercise consists in creating a new employee entity that relates to the existing company entity. This was done by creating a nem mongoose model `employee` and relating it to `company`. Beyond that, in order to allow user interaction with those entities, graphql schemas were created and a employee creation screen was implemented.
