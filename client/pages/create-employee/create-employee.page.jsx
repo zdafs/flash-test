@@ -54,6 +54,7 @@ export const CreateEmployeePage = () => {
     const newAvalilableBenefits = values
       .reduce((accBenefits, value) => union(accBenefits, companiesIdToBenefits[value]), []);
     setAvailableBenefits(newAvalilableBenefits);
+    form.setFieldsValue({ givenBenefits: undefined });
   };
 
   const benefits = availableBenefits
