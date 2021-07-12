@@ -14,6 +14,8 @@ const benefitValueToLabel = {
   [BENEFITS.GYM_PASS]: 'GymPass',
 };
 
+const union = (group1, group2) => [...new Set([...group1, ...group2])];
+
 export const CreateEmployeePage = () => {
   const [form] = Form.useForm();
 
@@ -45,12 +47,12 @@ export const CreateEmployeePage = () => {
   ?? [];
 
   const companiesIdToBenefits = companiesData?.getAllCompanies
-    .reduce((idToBenefitMap, company) => idToBenefitMap.set(company.id, company.chosenBenefits), new Map())
-  ?? new Map();
+    .reduce((idToBenefitMap, company) => ({ ...idToBenefitMap, [company.id]: company.chosenBenefits }), {})
+  ?? {};
 
   const handleCompanyChange = (values) => {
     const newAvalilableBenefits = values
-      .reduce((accBenefits, value) => [...new Set([...accBenefits, ...companiesIdToBenefits.get(value)])], []);
+      .reduce((accBenefits, value) => union(accBenefits, companiesIdToBenefits[value]), []);
     setAvailableBenefits(newAvalilableBenefits);
   };
 
